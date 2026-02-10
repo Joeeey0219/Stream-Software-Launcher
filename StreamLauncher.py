@@ -4,17 +4,29 @@ import os
 import subprocess
 import sys
 import requests
-import webbrowser
 
 from tkinter import ttk, filedialog
 from tkinter import messagebox
+
+# 處裡打包造成路徑錯誤的問題
+
+def resource_path(relative_path):
+    """取得 PyInstaller 打包後的資源路徑"""
+    try:
+        # PyInstaller 打包後會有 _MEIPASS
+        base_path = sys._MEIPASS
+    except AttributeError:
+        # 開發模式
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
 
 # =========================
 # 基本設定
 # =========================
 
 APP_NAME = "Stream Launcher"
-CONFIG_FILE = "config.json"
+CONFIG_FILE = resource_path("config.json")
 APP_VERSION = "0.1"
 GITHUB_REPO = "Joeeey0219/Stream-Software-Launcher"
 
@@ -48,7 +60,7 @@ current_theme = tk.StringVar(value="clam")
 # =========================
 
 # 把 icon.ico 放在同資料夾即可
-root.iconbitmap("icon/icon.ico")
+root.iconbitmap(resource_path("icon/icon.ico"))
 
 # =========================
 # Tkinter 變數（綁定 UI 狀態）
@@ -64,7 +76,7 @@ admin_obs = tk.BooleanVar()
 sync_onecomm = tk.BooleanVar()
 sync_twitch = tk.BooleanVar()
 
-TWITCH_TEST_PATH = r"twitchtest-2.0\TwitchTest.exe"
+TWITCH_TEST_PATH = resource_path("twitchtest-2.0/TwitchTest.exe")
 
 # =========================
 # 功能性函式
