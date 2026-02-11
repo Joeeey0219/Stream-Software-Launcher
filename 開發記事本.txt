@@ -6,3 +6,6 @@ onecommee
 [啟動Twitch伺服器測試]
 
 # 可試 'vista', 'xpnative', 'default', 'clam'
+
+打包用指令
+python -m PyInstaller --onefile --windowed --icon=icon/icon.ico StreamLauncher.py
