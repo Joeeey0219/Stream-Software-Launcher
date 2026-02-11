@@ -1,9 +1,9 @@
 {
-    "obs_path": "D:/OBS/obs-studio/bin/64bit/obs64.exe",
-    "vts_path": "I:/Steam/steamapps/common/VTube Studio/VTube Studio.exe",
-    "onecomme_path": "D:/OneComme/OneComme.exe",
+    "obs_path": "",
+    "vts_path": "",
+    "onecomme_path": "",
     "admin_obs": true,
-    "sync_onecomme": true,
+    "sync_onecomme": false,
     "sync_twitch": false,
     "theme": "vista"
 }
