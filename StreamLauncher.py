@@ -56,11 +56,11 @@ root.iconbitmap("icon/icon.ico")
 # StringVar → 存文字（路徑）
 obs_path = tk.StringVar()
 vts_path = tk.StringVar()
-onecomm_path = tk.StringVar()
+onecomme_path = tk.StringVar()
 
 # BooleanVar → 存 True / False（勾選）
 admin_obs = tk.BooleanVar()
-sync_onecomm = tk.BooleanVar()
+sync_onecomme = tk.BooleanVar()
 sync_twitch = tk.BooleanVar()
 
 TWITCH_TEST_PATH = "twitchtest-2.0/TwitchTest.exe"
@@ -140,16 +140,16 @@ def launch_vts():
         messagebox.showerror("錯誤", f"VTube Studio 啟動失敗：{e}")
         return False
 
-def launch_onecomm():
-    """啟動 OneCommond"""
-    if not onecomm_path.get():
-        messagebox.showwarning("警告", "OneCommond 路徑未設定")
+def launch_onecomme():
+    """啟動 onecomme"""
+    if not onecomme_path.get():
+        messagebox.showwarning("警告", "onecomme 路徑未設定")
         return False
     try:
-        subprocess.Popen([onecomm_path.get()])
+        subprocess.Popen([onecomme_path.get()])
         return True
     except Exception as e:
-        messagebox.showerror("錯誤", f"OneCommond 啟動失敗：{e}")
+        messagebox.showerror("錯誤", f"onecomme 啟動失敗：{e}")
         return False
 
 def launch_twitch_test():
@@ -174,8 +174,8 @@ def launch_all_streams():
     if not launch_vts():
         success = False
 
-    if sync_onecomm.get():
-        if not launch_onecomm():
+    if sync_onecomme.get():
+        if not launch_onecomme():
             success = False
 
     if sync_twitch.get():
@@ -238,14 +238,14 @@ def load_config():
     # 將設定值塞回 UI 變數
     obs_path.set(data.get("obs_path", ""))
     vts_path.set(data.get("vts_path", ""))
-    onecomm_path.set(data.get("onecomm_path", ""))
+    onecomme_path.set(data.get("onecomme_path", ""))
 
     admin_obs.set(data.get("admin_obs", False))
-    sync_onecomm.set(data.get("sync_onecomm", False))
+    sync_onecomme.set(data.get("sync_onecomme", False))
     sync_twitch.set(data.get("sync_twitch", False))
 
-    # 同步顯示 OneCommond
-    toggle_onecomm()
+    # 同步顯示 onecomme
+    toggle_onecomme()
 
 # =========================
 # 儲存設定檔
@@ -257,9 +257,9 @@ def save_config():
     data = {
         "obs_path": obs_path.get(),
         "vts_path": vts_path.get(),
-        "onecomm_path": onecomm_path.get(),
+        "onecomme_path": onecomme_path.get(),
         "admin_obs": admin_obs.get(),
-        "sync_onecomm": sync_onecomm.get(),
+        "sync_onecomme": sync_onecomme.get(),
         "sync_twitch": sync_twitch.get(),
         "theme": current_theme.get(),
     }
@@ -280,16 +280,16 @@ def pick_file(var):
         var.set(path)
 
 # =========================
-# OneCommond 顯示切換
+# onecommee 顯示切換
 # =========================
 
-def toggle_onecomm():
-    """依勾選顯示/隱藏 OneCommond"""
+def toggle_onecomme():
+    """依勾選顯示/隱藏 onecomme"""
 
-    if sync_onecomm.get():
-        onecomm_frame.grid()
+    if sync_onecomme.get():
+        onecomme_frame.grid()
     else:
-        onecomm_frame.grid_remove()
+        onecomme_frame.grid_remove()
 
     # 重新計算視窗大小
     root.update_idletasks()
@@ -464,9 +464,9 @@ ttk.Checkbutton(
 
 ttk.Checkbutton(
     check_frame,
-    text="同步開啟OneCommond",
-    variable=sync_onecomm,
-    command=toggle_onecomm
+    text="同步開啟onecomme",
+    variable=sync_onecomme,
+    command=toggle_onecomme
 ).pack(side="left", padx=5)
 
 ttk.Checkbutton(
@@ -476,26 +476,26 @@ ttk.Checkbutton(
 ).pack(side="left", padx=5)
 
 # =========================
-# OneCommond 區（動態）
+# onecommee 區（動態）
 # =========================
 
-onecomm_frame = ttk.Frame(main)
+onecomme_frame = ttk.Frame(main)
 
-ttk.Label(onecomm_frame, text="OneCommond").grid(row=0, column=0, sticky="w")
+ttk.Label(onecomme_frame, text="onecomme").grid(row=0, column=0, sticky="w")
 
 ttk.Entry(
-    onecomm_frame,
-    textvariable=onecomm_path
+    onecomme_frame,
+    textvariable=onecomme_path
 ).grid(row=0, column=1, sticky="we", padx=5)
 
 ttk.Button(
-    onecomm_frame,
+    onecomme_frame,
     text="瀏覽",
-    command=lambda: pick_file(onecomm_path)
+    command=lambda: pick_file(onecomme_path)
 ).grid(row=0, column=2)
 
-onecomm_frame.grid(row=4, column=0, columnspan=3, sticky="we", pady=5)
-onecomm_frame.grid_remove()
+onecomme_frame.grid(row=4, column=0, columnspan=3, sticky="we", pady=5)
+onecomme_frame.grid_remove()
 
 # =========================
 # 按鈕區

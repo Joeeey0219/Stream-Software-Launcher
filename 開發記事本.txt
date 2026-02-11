@@ -1,7 +1,7 @@
 OBS
 VTS
-OneCommond
-[_]用管理員模式開啟OBS [_]同步啟動OneCommond [_]同步啟動Twitch伺服器測試軟體
+onecommee
+[_]用管理員模式開啟OBS [_]同步啟動onecommee [_]同步啟動Twitch伺服器測試軟體
 [開始直播]
 [啟動Twitch伺服器測試]
 
