@@ -1,0 +1,20 @@
+cmake_minimum_required(VERSION 3.20)
+project(StreamLauncher VERSION 1.5.2 LANGUAGES CXX)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+add_compile_definitions(UNICODE _UNICODE WIN32_LEAN_AND_MEAN)
+
+add_executable(StreamLauncher WIN32 src/main.cpp src/launcher.cpp src/autostart.cpp src/update_check.cpp src/resources.rc)
+target_link_libraries(StreamLauncher PRIVATE shell32 comdlg32 user32 gdi32 advapi32 winhttp dwmapi)
+if(MSVC)
+    target_compile_options(StreamLauncher PRIVATE /utf-8 /W4)
+endif()
+
+enable_testing()
+add_executable(launcher_tests tests/test_launcher.cpp src/launcher.cpp src/autostart.cpp src/update_check.cpp)
+target_link_libraries(launcher_tests PRIVATE shell32 user32 advapi32 winhttp)
+if(MSVC)
+    target_compile_options(launcher_tests PRIVATE /utf-8 /W4)
+endif()
+add_test(NAME launcher_tests COMMAND launcher_tests)

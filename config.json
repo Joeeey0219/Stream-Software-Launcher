@@ -1,9 +1,0 @@
-{
-    "obs_path": "",
-    "vts_path": "",
-    "onecomme_path": "",
-    "admin_obs": true,
-    "sync_onecomme": false,
-    "sync_twitch": false,
-    "theme": "vista"
-}

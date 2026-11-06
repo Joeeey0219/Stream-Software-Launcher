@@ -1,0 +1,14 @@
+build/
+dist/
+settings.ini
+config.json
+__pycache__/
+*.spec
+*.log
+
+release/
+AGENTS.md
+.codex-private/
+.codex/
+.env
+.env.*
